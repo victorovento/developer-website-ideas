@@ -1,0 +1,126 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8, 8, 8, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    flex-shrink: 0;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &__logo-icon {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--red);
+    letter-spacing: -1px;
+  }
+
+  &__logo-text {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  &__logo-accent {
+    color: var(--red);
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition), background var(--transition);
+
+    &:hover {
+      color: var(--text-primary);
+      background: var(--bg-elevated);
+    }
+  }
+
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.4rem 0.875rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--red-muted);
+    color: var(--red);
+    border: 1px solid rgba(229, 57, 53, 0.25);
+    text-decoration: none;
+    transition: background var(--transition), border-color var(--transition);
+
+    &:hover {
+      background: rgba(229, 57, 53, 0.22);
+      color: var(--red);
+      border-color: rgba(229, 57, 53, 0.4);
+    }
+  }
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.75rem 1.5rem;
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__copy,
+  &__note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  a {
+    color: var(--text-secondary);
+    transition: color var(--transition);
+
+    &:hover {
+      color: var(--red);
+    }
+  }
+}
