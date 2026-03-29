@@ -5,6 +5,8 @@ import { PortfolioService, Portfolio } from '../../services/portfolio.service';
 import { PortfolioCardComponent } from '../../components/portfolio-card/portfolio-card.component';
 import { FilterBarComponent } from '../../components/filter-bar/filter-bar.component';
 
+const PAGE_SIZE = 100;
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -21,9 +23,19 @@ export class HomeComponent implements OnInit {
   portfolios: Portfolio[] = [];
   workTitles: string[] = [];
   filtered: Portfolio[] = [];
+  page = 1;
 
   private searchQuery = '';
   private activeFilter = '';
+
+  get paged(): Portfolio[] {
+    const start = (this.page - 1) * PAGE_SIZE;
+    return this.filtered.slice(start, start + PAGE_SIZE);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filtered.length / PAGE_SIZE);
+  }
 
   ngOnInit(): void {
     this.titleService.setTitle('Developer Website Ideas — Open Source Directory');
@@ -56,6 +68,15 @@ export class HomeComponent implements OnInit {
     this.applyFilters();
   }
 
+  goToPage(p: number): void {
+    this.page = p;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  trackByUrl(_: number, p: Portfolio): string {
+    return p.url;
+  }
+
   private applyFilters(): void {
     const q = this.searchQuery.toLowerCase().trim();
     const f = this.activeFilter.toLowerCase().trim();
@@ -72,10 +93,8 @@ export class HomeComponent implements OnInit {
 
       return matchesSearch && matchesFilter;
     });
-  }
 
-  trackByUrl(_: number, p: Portfolio): string {
-    return p.url;
+    this.page = 1;
   }
 
   private injectStructuredData(): void {

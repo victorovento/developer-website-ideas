@@ -76,12 +76,42 @@
 
       @if (filtered.length > 0) {
         <ul class="grid" aria-label="Portfolio listings">
-          @for (portfolio of filtered; track trackByUrl($index, portfolio)) {
+          @for (portfolio of paged; track trackByUrl($index, portfolio)) {
             <li>
               <app-portfolio-card [portfolio]="portfolio" />
             </li>
           }
         </ul>
+
+        @if (totalPages > 1) {
+          <nav class="pagination" aria-label="Pagination">
+            <button
+              class="pagination__btn"
+              [disabled]="page === 1"
+              (click)="goToPage(page - 1)"
+              aria-label="Previous page"
+            >
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <span class="pagination__info">
+              Page <strong>{{ page }}</strong> of <strong>{{ totalPages }}</strong>
+            </span>
+
+            <button
+              class="pagination__btn"
+              [disabled]="page === totalPages"
+              (click)="goToPage(page + 1)"
+              aria-label="Next page"
+            >
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </nav>
+        }
       }
     </div>
   </section>
