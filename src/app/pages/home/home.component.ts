@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   private activeFilter = '';
 
   ngOnInit(): void {
-    this.titleService.setTitle('Developer Website Ideas — Open Source Developer Portfolio Directory');
+    this.titleService.setTitle('Developer Website Ideas — Open Source Directory');
     this.meta.updateTag({
       name: 'description',
       content: 'Browse and discover developer portfolios from talented engineers and designers around the world. Open source and community-driven.',

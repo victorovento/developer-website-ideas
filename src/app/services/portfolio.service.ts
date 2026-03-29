@@ -28,8 +28,15 @@ export class PortfolioService {
   getWorkTitles(): Observable<string[]> {
     return this.portfolios$.pipe(
       map((portfolios) => {
-        const titles = new Set(portfolios.map((p) => p.workTitle.trim()));
-        return Array.from(titles).sort();
+        const counts = new Map<string, number>();
+        for (const p of portfolios) {
+          const t = p.workTitle.trim();
+          if (t) counts.set(t, (counts.get(t) ?? 0) + 1);
+        }
+        return Array.from(counts.entries())
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 10)
+          .map(([title]) => title);
       })
     );
   }
