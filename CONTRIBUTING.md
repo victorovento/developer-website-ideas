@@ -4,7 +4,7 @@ Thank you for your interest in adding your portfolio to this directory! This gui
 
 ## How to Add Your Portfolio
 
-Adding your portfolio is done entirely through a pull request — no code changes required, just a single line added to `WEBSITES.md`.
+Adding your portfolio is done entirely through a pull request — no code changes required, just a single line added to `public/WEBSITES.md`.
 
 ### Step-by-step
 
@@ -14,7 +14,7 @@ Adding your portfolio is done entirely through a pull request — no code change
    git clone https://github.com/victorovento/developer-website-ideas.git
    cd developer-website-ideas
    ```
-3. **Open** `WEBSITES.md` in any text editor.
+3. **Open** `public/WEBSITES.md` in any text editor.
 4. **Add your entry** at the end of the file using this format:
    ```
    Website Name | Website URL | Owner | Work Title | Source Code Link (optional)
@@ -25,7 +25,7 @@ Adding your portfolio is done entirely through a pull request — no code change
    ```
 5. **Commit** your change:
    ```bash
-   git add WEBSITES.md
+   git add public/WEBSITES.md
    git commit -m "feat: add Jane Smith portfolio"
    git push origin main
    ```
@@ -60,7 +60,7 @@ That's it! A maintainer will review your PR and merge it.
 
 Before submitting, please verify:
 
-- [ ] Your entry is at the **end** of the list in `WEBSITES.md`
+- [ ] Your entry is at the **end** of the list in `public/WEBSITES.md`
 - [ ] All fields are separated by ` | ` (space-pipe-space)
 - [ ] The URL starts with `https://`
 - [ ] The website is live and accessible
