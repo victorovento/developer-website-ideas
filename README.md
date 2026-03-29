@@ -1,14 +1,14 @@
-# DevFolio Directory
+# Developer Website Ideas
 
 An open-source, community-driven directory of developer portfolios. Browse talented engineers, designers, and creators — and add your own.
 
-> **Live site:** [devfolio.directory](https://devfolio.directory) *(update this URL after deployment)*
+> **Repo:** [github.com/victorovento/developer-website-ideas](https://github.com/victorovento/developer-website-ideas)
 
 ---
 
 ## What is this?
 
-DevFolio Directory is a curated, searchable gallery of developer portfolio websites. It's:
+Developer Website Ideas is a curated, searchable gallery of developer portfolio websites. It's:
 
 - **Open source** — the full source code is public and contributions are welcome
 - **Community driven** — anyone can add their portfolio via a pull request
@@ -74,8 +74,8 @@ Lines beginning with `#` are treated as comments and ignored.
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/devfolio-directory.git
-cd devfolio-directory
+git clone https://github.com/victorovento/developer-website-ideas.git
+cd developer-website-ideas
 
 # Install dependencies
 npm install
@@ -90,7 +90,7 @@ Open [http://localhost:4200](http://localhost:4200).
 
 ```bash
 npm run build
-node dist/devfolio-directory/server/server.mjs
+node dist/developer-website-ideas/server/server.mjs
 ```
 
 ---
@@ -99,16 +99,18 @@ node dist/devfolio-directory/server/server.mjs
 
 This project is built for SSR. You can deploy to:
 
-- **Node.js server** — run `node dist/devfolio-directory/server/server.mjs`
+- **Node.js server** — run `node dist/developer-website-ideas/server/server.mjs`
 - **Docker** — build the app, copy `dist/`, set `NODE_ENV=production`, expose port 4000
-- **Vercel / Render / Railway** — set build command to `npm run build` and start command to `node dist/devfolio-directory/server/server.mjs`
+- **Vercel / Render / Railway** — set build command to `npm run build` and start command to `node dist/developer-website-ideas/server/server.mjs`
+
+After deploying, update the canonical URL and Open Graph URLs in `src/index.html` with your production domain.
 
 ---
 
 ## Project Structure
 
 ```
-devfolio-directory/
+developer-website-ideas/
 ├── public/
 │   ├── WEBSITES.md          # Portfolio data — edit this to add entries
 │   └── robots.txt

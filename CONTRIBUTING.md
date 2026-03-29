@@ -1,4 +1,4 @@
-# Contributing to DevFolio Directory
+# Contributing to Developer Website Ideas
 
 Thank you for your interest in adding your portfolio to this directory! This guide walks you through the process.
 
@@ -11,8 +11,8 @@ Adding your portfolio is done entirely through a pull request — no code change
 1. **Fork** this repository.
 2. **Clone** your fork locally:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/devfolio-directory.git
-   cd devfolio-directory
+   git clone https://github.com/victorovento/developer-website-ideas.git
+   cd developer-website-ideas
    ```
 3. **Open** `WEBSITES.md` in any text editor.
 4. **Add your entry** at the end of the file using this format:
@@ -77,4 +77,4 @@ By participating in this project you agree to abide by our [Code of Conduct](COD
 
 ## Questions?
 
-Open an [issue](https://github.com/YOUR_USERNAME/devfolio-directory/issues) and we'll be happy to help.
+Open an [issue](https://github.com/victorovento/developer-website-ideas/issues) and we'll be happy to help.

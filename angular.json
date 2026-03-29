@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "devfolio-directory": {
+    "developer-website-ideas": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -69,10 +69,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "devfolio-directory:build:production"
+              "buildTarget": "developer-website-ideas:build:production"
             },
             "development": {
-              "buildTarget": "devfolio-directory:build:development"
+              "buildTarget": "developer-website-ideas:build:development"
             }
           },
           "defaultConfiguration": "development"

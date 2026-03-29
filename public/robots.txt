@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devfolio.directory/sitemap.xml
+Sitemap: https://YOUR_PRODUCTION_DOMAIN/sitemap.xml

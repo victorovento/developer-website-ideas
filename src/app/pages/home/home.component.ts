@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   private activeFilter = '';
 
   ngOnInit(): void {
-    this.titleService.setTitle('DevFolio Directory — Open Source Developer Portfolio Directory');
+    this.titleService.setTitle('Developer Website Ideas — Open Source Developer Portfolio Directory');
     this.meta.updateTag({
       name: 'description',
       content: 'Browse and discover developer portfolios from talented engineers and designers around the world. Open source and community-driven.',
@@ -82,13 +82,13 @@ export class HomeComponent implements OnInit {
     const script = {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: 'DevFolio Directory',
+      name: 'Developer Website Ideas',
       description: 'An open-source directory of developer portfolios.',
-      url: 'https://devfolio.directory/',
+      url: 'https://github.com/victorovento/developer-website-ideas',
       isPartOf: {
         '@type': 'WebSite',
-        name: 'DevFolio Directory',
-        url: 'https://devfolio.directory/',
+        name: 'Developer Website Ideas',
+        url: 'https://github.com/victorovento/developer-website-ideas',
       },
     };
 
