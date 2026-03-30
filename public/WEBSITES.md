@@ -199,7 +199,6 @@ Riley Shaw | https://rileyjshaw.com | Riley Shaw | Developer |
 Ritesh Bucha | https://bucharitesh.in | Ritesh Bucha | Full Stack Developer |
 Robiul Hasan | https://www.robiulhasan.dev | Robiul Hasan | Developer |
 Roland Taylor | http://rolandixor.pro | Roland Taylor | Developer |
-Ronny Coste | https://ronnycoste.com | Ronny Coste | Developer |
 Ryan Burgess | http://ryanburgess.com | Ryan Burgess | Developer |
 Ryan Fitton | https://ryanfitton.co.uk | Ryan Fitton | Developer |
 Sabbir Ahmed | https://sabbirahmed.net | Sabbir Ahmed | Full Stack Developer |
