@@ -4,13 +4,14 @@ import { Meta, Title } from '@angular/platform-browser';
 import { PortfolioService, Portfolio } from '../../services/portfolio.service';
 import { PortfolioCardComponent } from '../../components/portfolio-card/portfolio-card.component';
 import { FilterBarComponent } from '../../components/filter-bar/filter-bar.component';
+import { ContributorsComponent } from '../../components/contributors/contributors.component';
 
 const PAGE_SIZE = 100;
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PortfolioCardComponent, FilterBarComponent],
+  imports: [CommonModule, PortfolioCardComponent, FilterBarComponent, ContributorsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -23,10 +24,11 @@ export class HomeComponent implements OnInit {
   portfolios: Portfolio[] = [];
   workTitles: string[] = [];
   filtered: Portfolio[] = [];
+  recommended: Portfolio[] = [];
   page = 1;
 
   private searchQuery = '';
-  private activeFilter = '';
+  private activeFilters: string[] = [];
 
   get paged(): Portfolio[] {
     const start = (this.page - 1) * PAGE_SIZE;
@@ -35,6 +37,12 @@ export class HomeComponent implements OnInit {
 
   get totalPages(): number {
     return Math.ceil(this.filtered.length / PAGE_SIZE);
+  }
+
+  get displayCount(): string {
+    const n = this.portfolios.length;
+    if (!n) return '';
+    return `${Math.floor(n / 50) * 50}+`;
   }
 
   ngOnInit(): void {
@@ -47,6 +55,7 @@ export class HomeComponent implements OnInit {
     this.portfolioService.getPortfolios().subscribe((data) => {
       this.portfolios = data;
       this.filtered = data;
+      this.recommended = this.pickDailyRecommended(data);
     });
 
     this.portfolioService.getWorkTitles().subscribe((titles) => {
@@ -63,9 +72,15 @@ export class HomeComponent implements OnInit {
     this.applyFilters();
   }
 
-  onFilter(workTitle: string): void {
-    this.activeFilter = workTitle;
+  onFilter(filters: string[]): void {
+    this.activeFilters = filters;
     this.applyFilters();
+  }
+
+  surpriseMe(): void {
+    if (!isPlatformBrowser(this.platformId) || !this.portfolios.length) return;
+    const pick = this.portfolios[Math.floor(Math.random() * this.portfolios.length)];
+    window.open(pick.url, '_blank', 'noopener,noreferrer');
   }
 
   goToPage(p: number): void {
@@ -79,7 +94,6 @@ export class HomeComponent implements OnInit {
 
   private applyFilters(): void {
     const q = this.searchQuery.toLowerCase().trim();
-    const f = this.activeFilter.toLowerCase().trim();
 
     this.filtered = this.portfolios.filter((p) => {
       const matchesSearch =
@@ -89,12 +103,38 @@ export class HomeComponent implements OnInit {
         p.workTitle.toLowerCase().includes(q) ||
         p.url.toLowerCase().includes(q);
 
-      const matchesFilter = !f || p.workTitle.toLowerCase() === f;
+      const matchesFilter =
+        this.activeFilters.length === 0 ||
+        this.activeFilters.some((f) => p.workTitle.toLowerCase() === f.toLowerCase());
 
       return matchesSearch && matchesFilter;
     });
 
     this.page = 1;
+  }
+
+  private pickDailyRecommended(portfolios: Portfolio[]): Portfolio[] {
+    const today = new Date();
+    const seed = parseInt(
+      `${today.getUTCFullYear()}${String(today.getUTCMonth() + 1).padStart(2, '0')}${String(today.getUTCDate()).padStart(2, '0')}`
+    );
+
+    // mulberry32 PRNG
+    let s = seed;
+    const rand = () => {
+      s |= 0; s = s + 0x6d2b79f5 | 0;
+      let t = Math.imul(s ^ s >>> 15, 1 | s);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+
+    const pool = [...portfolios];
+    const picks: Portfolio[] = [];
+    while (picks.length < 3 && pool.length > 0) {
+      const idx = Math.floor(rand() * pool.length);
+      picks.push(pool.splice(idx, 1)[0]);
+    }
+    return picks;
   }
 
   private injectStructuredData(): void {

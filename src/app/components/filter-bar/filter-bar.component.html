@@ -25,9 +25,9 @@
     @for (filter of filters; track filter) {
       <button
         class="filter-bar__chip"
-        [class.filter-bar__chip--active]="activeFilter === filter"
+        [class.filter-bar__chip--active]="isActive(filter)"
         (click)="onFilter(filter)"
-        [attr.aria-pressed]="activeFilter === filter"
+        [attr.aria-pressed]="isActive(filter)"
       >
         {{ filter }}
       </button>

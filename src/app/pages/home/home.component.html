@@ -14,6 +14,12 @@
         Browse and discover developer portfolios from talented engineers, designers, and creators worldwide.
         Find inspiration, share your own work, and celebrate the craft.
       </p>
+      @if (displayCount) {
+        <p class="hero__counter" aria-live="polite">
+          <strong>{{ displayCount }}</strong> developer portfolios and growing
+        </p>
+      }
+
       <div class="hero__actions">
         <a
           class="btn btn--primary"
@@ -26,6 +32,22 @@
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
+        <button
+          class="btn btn--ghost"
+          (click)="surpriseMe()"
+          [disabled]="portfolios.length === 0"
+          title="Open a random portfolio"
+        >
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="5" cy="5" r="1" fill="currentColor"/>
+            <circle cx="11" cy="5" r="1" fill="currentColor"/>
+            <circle cx="5" cy="11" r="1" fill="currentColor"/>
+            <circle cx="11" cy="11" r="1" fill="currentColor"/>
+            <circle cx="8" cy="8" r="1" fill="currentColor"/>
+          </svg>
+          Surprise Me
+        </button>
         <a
           class="btn btn--ghost"
           href="https://github.com/victorovento/developer-website-ideas"
@@ -46,6 +68,22 @@
   <section class="directory" aria-labelledby="directory-heading">
     <div class="directory__inner">
       <h2 class="sr-only" id="directory-heading">Developer Website Ideas</h2>
+
+      @if (recommended.length > 0) {
+        <div class="featured">
+          <div class="featured__header">
+            <span class="featured__label">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1l1.85 3.75L14 5.5l-3 2.92.71 4.12L8 10.5l-3.71 1.95L5 8.42 2 5.5l4.15-.75L8 1z" fill="currentColor"/></svg>
+              Today's recommended
+            </span>
+          </div>
+          <ul class="featured__grid" aria-label="Today's recommended portfolios">
+            @for (portfolio of recommended; track portfolio.url) {
+              <li><app-portfolio-card [portfolio]="portfolio" /></li>
+            }
+          </ul>
+        </div>
+      }
 
       <app-filter-bar
         [workTitles]="workTitles"
@@ -115,4 +153,5 @@
       }
     </div>
   </section>
+  <app-contributors />
 </main>

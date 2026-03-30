@@ -1,0 +1,65 @@
+<main class="stats-page">
+  <div class="stats-page__inner">
+
+    <header class="stats-page__header">
+      <h1 class="stats-page__title">Directory Stats</h1>
+      <p class="stats-page__sub">A snapshot of the portfolios in this directory.</p>
+    </header>
+
+    <!-- Summary cards -->
+    <div class="stat-cards">
+      <div class="stat-card">
+        <span class="stat-card__value">{{ total }}</span>
+        <span class="stat-card__label">Total Portfolios</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__value">{{ withSourceCode }}</span>
+        <span class="stat-card__label">Open Source <span class="stat-card__note">({{ sourceCodePct }}%)</span></span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__value">{{ uniqueRoles }}</span>
+        <span class="stat-card__label">Unique Roles</span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+
+      <!-- Work title breakdown -->
+      <section class="stat-section" aria-labelledby="roles-heading">
+        <h2 class="stat-section__heading" id="roles-heading">Top Roles</h2>
+        <ul class="bar-list" aria-label="Portfolio count by role">
+          @for (item of topWorkTitles; track item.title) {
+            <li class="bar-item">
+              <div class="bar-item__label">
+                <span class="bar-item__name">{{ item.title }}</span>
+                <span class="bar-item__count">{{ item.count }}</span>
+              </div>
+              <div class="bar-item__track" role="presentation">
+                <div class="bar-item__fill" [style.width.%]="item.pct"></div>
+              </div>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <!-- Top hosting platforms -->
+      <section class="stat-section" aria-labelledby="domains-heading">
+        <h2 class="stat-section__heading" id="domains-heading">Top Hosting Platforms</h2>
+        <ul class="bar-list" aria-label="Portfolio count by hosting platform">
+          @for (item of topDomains; track item.domain) {
+            <li class="bar-item">
+              <div class="bar-item__label">
+                <span class="bar-item__name">{{ item.domain }}</span>
+                <span class="bar-item__count">{{ item.count }}</span>
+              </div>
+              <div class="bar-item__track" role="presentation">
+                <div class="bar-item__fill" [style.width.%]="item.pct"></div>
+              </div>
+            </li>
+          }
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</main>

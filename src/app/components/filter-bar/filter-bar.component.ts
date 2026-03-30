@@ -15,10 +15,10 @@ export class FilterBarComponent implements OnChanges {
   @Input() filteredCount = 0;
 
   @Output() searchChange = new EventEmitter<string>();
-  @Output() filterChange = new EventEmitter<string>();
+  @Output() filterChange = new EventEmitter<string[]>();
 
   searchQuery = '';
-  activeFilter = 'All';
+  activeFilters: string[] = [];
 
   get filters(): string[] {
     return ['All', ...this.workTitles];
@@ -32,8 +32,22 @@ export class FilterBarComponent implements OnChanges {
   }
 
   onFilter(filter: string): void {
-    this.activeFilter = filter;
-    this.filterChange.emit(filter === 'All' ? '' : filter);
+    if (filter === 'All') {
+      this.activeFilters = [];
+    } else {
+      const idx = this.activeFilters.indexOf(filter);
+      if (idx >= 0) {
+        this.activeFilters = this.activeFilters.filter((f) => f !== filter);
+      } else {
+        this.activeFilters = [...this.activeFilters, filter];
+      }
+    }
+    this.filterChange.emit(this.activeFilters);
+  }
+
+  isActive(filter: string): boolean {
+    if (filter === 'All') return this.activeFilters.length === 0;
+    return this.activeFilters.includes(filter);
   }
 
   clearSearch(): void {

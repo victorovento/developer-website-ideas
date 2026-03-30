@@ -15,7 +15,7 @@ Adding your portfolio is done entirely through a pull request — no code change
    cd developer-website-ideas
    ```
 3. **Open** `public/WEBSITES.md` in any text editor.
-4. **Add your entry** at the end of the file using this format:
+4. **Add your entry** in **alphabetical order by website name**. Find the correct position in the list and insert your line there — do not add it at the end. The list is sorted A→Z by the first field (Website Name).
    ```
    Website Name | Website URL | Owner | Work Title | Source Code Link (optional)
    ```
@@ -60,7 +60,7 @@ That's it! A maintainer will review your PR and merge it.
 
 Before submitting, please verify:
 
-- [ ] Your entry is at the **end** of the list in `public/WEBSITES.md`
+- [ ] Your entry is placed in **alphabetical order by name** in `public/WEBSITES.md`
 - [ ] All fields are separated by ` | ` (space-pipe-space)
 - [ ] The URL starts with `https://`
 - [ ] The website is live and accessible
