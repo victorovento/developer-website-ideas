@@ -215,7 +215,6 @@ Scott Spence | https://scottspence.com | Scott Spence | Developer |
 Serhii Nazarov | https://www.serhii-nazarov.com | Serhii Nazarov | Senior Front-End & Full Stack Engineer |
 Sezer | https://www.imsezer.com | Sezer | Machine Learning & Robotics Engineer |
 Shafiuzzaman | https://shafisma.me | Shafiuzzaman | Full Stack Developer |
-Shahid Shaikh | http://shahidshaikh.com | Shahid Shaikh | Developer |
 Sharif Rahat | https://sharifrahat.com | Sharif Rahat | Full Stack Developer |
 Shefali | https://shefali.dev | Shefali | Developer |
 Shivam Kashyap | https://shivampro.vercel.app | Shivam Kashyap | Developer |
